@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<main>
+  <form action="/" method="POST">
+    <textarea name="content" rows="5" id="content" placeholder="Add todo..."></textarea>
+    <input type="date" name="date" id="date">
+    <div class="form-buttons">
+      <input class="button" type="submit" value="Submit">
+    </div>
+  </form>
+
+  <div class="todos">
+    {% for todo in todos %}
+    <div class="todo">
+      <div class="todo-content">
+        {% if todo.done %}
+        <p class="content marked">{{todo.content}}</p>
+        {% else %}
+        <p class="content">{{todo.content}}</p>
+        {% endif %}
+        <p class="time">Added at: {{todo.date}}</p>
+      </div>
+      <a class="button" id="update" href="/update/{{todo.id}}">Update</a>
+      <a class="button" href="/delete/{{todo.id}}">Delete</a>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
