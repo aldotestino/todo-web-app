@@ -5,6 +5,12 @@ class Store:
     def get(self):
         return self.list
 
+    def getOne(self, id):
+        for item in self.list:
+            if item.id == id:
+                return item
+        raise Exception('Todo not found')
+
     def add(self, item):
         self.list.append(item)
 
@@ -13,6 +19,7 @@ class Store:
             if item.id == id:
                 item.update()
                 return item
+        raise Exception('Todo not found')
 
     def deleteOne(self, id):
         for item in self.list:
@@ -20,5 +27,6 @@ class Store:
                 deleted = item
                 self.list.remove(item)
                 return deleted
+        raise Exception('Todo not found')
 
 todos = Store()
