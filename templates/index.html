@@ -2,27 +2,48 @@
 
 {% block main %}
 <main>
+
   <form action="/" method="POST">
-    <textarea name="content" rows="5" id="content" placeholder="Add todo..."></textarea>
-    <input type="date" name="date" id="date">
-    <div class="form-buttons">
-      <input class="button" type="submit" value="Submit">
+    <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+        <textarea class="textarea is-primary" id="content" name="content" placeholder="Add todo..." required></textarea>
+      </div>
     </div>
+    <div class="field">
+      <label class="label">Date</label>
+      <div class="control">
+        <input class="input is-primary" id="date" name="date" type="date" placeholder="Date" required>
+      </div>
+    </div>
+    <button type="submit" class="button is-primary">Create</button>
   </form>
 
   <div class="todos">
     {% for todo in todos %}
-    <div class="todo">
-      <div class="todo-content">
+    <div class="card">
+      <div class="card-content">
         {% if todo.done %}
-        <p class="content marked">{{todo.content}}</p>
+        <p class="title marked">{{todo.content}}</p>
         {% else %}
-        <p class="content">{{todo.content}}</p>
+        <p class="title">{{todo.content}}</p>
         {% endif %}
-        <p class="time">Added at: {{todo.date}}</p>
+        <p class="subtitle">
+          Added at: {{todo.date}}
+        </p>
       </div>
-      <a class="button" id="update" href="/update/{{todo.id}}">Update</a>
-      <a class="button" href="/delete/{{todo.id}}">Delete</a>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+          <span>
+            <a class="button is-warning" id="update" href="/update/{{todo.id}}">Update</a>
+          </span>
+        </p>
+        <p class="card-footer-item">
+          <span>
+            <a class="button is-danger" href="/delete/{{todo.id}}">Delete</a>
+          </span>
+        </p>
+      </footer>
     </div>
     {% endfor %}
   </div>

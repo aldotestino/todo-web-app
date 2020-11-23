@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/main.css">
   <title>Todo Web App</title>
 </head>
 
 <body>
-  <nav class="navbar">
-    <h1>Todo App</h1>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <h1 class="title">Todo App</h1>
+    </div>
   </nav>
   {% block main %} {% endblock %}
 </body>
